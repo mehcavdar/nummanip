@@ -1,12 +1,20 @@
 package calc
 
-func Add(numbers ...int) int {
+import "errors"
+
+func Add(numbers ...int) (int, error) {
 
 	sum := 0
 
-	for _, num := range numbers {
+	if len(numbers) < 2 {
 
-		sum = sum + num
+		return sum, errors.New("2 den fazla sayı sagla")
+	} else {
+
+		for _, num := range numbers {
+
+			sum = sum + num
+		}
+		return sum, nil
 	}
-	return sum
 }
