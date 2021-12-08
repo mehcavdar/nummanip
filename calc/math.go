@@ -1,14 +1,18 @@
 package calc
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/fatih/color"
+)
 
 func Add(numbers ...int) (int, error) {
 
 	sum := 0
 
 	if len(numbers) < 2 {
-
-		return sum, errors.New("2 den fazla sayı sagla")
+		errorMessage := color.RedString("2 den fazla sayı sagla")
+		return sum, errors.New(errorMessage)
 	} else {
 
 		for _, num := range numbers {
