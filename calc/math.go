@@ -1,12 +1,18 @@
 package calc
 
-func Add(numbers ...int) int {
+import "errors"
+
+func Add(numbers ...int) (error, int) {
 	sum := 0
 
-	for _, num := range numbers {
+	if len(numbers) < 2 {
+		return errors.New("more tahn 2 parameter"), sum
+	} else {
+		for _, num := range numbers {
 
-		sum += num
+			sum += num
+		}
+
 	}
-
-	return sum
+	return nil, sum
 }
